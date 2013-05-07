@@ -37,21 +37,30 @@
                 </c:if>
             </f:facet>
             <p:row>
-                <p:column colspan="2">#{msg['szamla.nev']}</p:column>
-                <p:column colspan="4">
+                <p:column colspan="3">
+                    <p:outputLabel value="#{msg['szamla.nev']}"/><br/>
                     <p:inputText id="nev" value="#{szamla.nev}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.nev']}"/>
                     <p:message for="nev"/>
+                </p:column>
+                <p:column colspan="3">
+                    <p:outputLabel value="#{msg['szamla.szam']}"/><br/>
+                    <p:inputText id="szam" value="#{szamla.szam}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.szam']}"/>
+                    <p:message for="szam"/>
                 </p:column>
             </p:row>
             <p:row>
                 <p:column colspan="2">
                     <p:outputLabel value="#{msg['szamla.bruttoErtek']}"/><br/>
-                    <p:inputText id="bruttoErtek" value="#{szamla.bruttoErtek}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.bruttoErtek']}"/>                   
+                    <p:inputText id="bruttoErtek" value="#{szamla.bruttoErtek}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.bruttoErtek']}" onchange="szamolNetto()">                   
+                        <f:convertNumber maxIntegerDigits="8" minIntegerDigits="1" maxFractionDigits="2" minFractionDigits="2" groupingUsed="false"/>
+                    </p:inputText>
                     <p:message for="bruttoErtek"/>
                 </p:column>
                 <p:column colspan="2">
                     <p:outputLabel value="#{msg['szamla.nettoErtek']}"/><br/>
-                    <p:inputText id="nettoErtek" value="#{szamla.nettoErtek}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.nettoErtek']}"/>
+                    <p:inputText id="nettoErtek" value="#{szamla.nettoErtek}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.nettoErtek']}">
+                        <f:convertNumber maxIntegerDigits="8" minIntegerDigits="1" maxFractionDigits="2" minFractionDigits="2" groupingUsed="false"/>
+                    </p:inputText>
                     <p:message for="nettoErtek"/>
                 </p:column>
                 <p:column>
@@ -70,23 +79,17 @@
             <p:row>
                 <p:column colspan="2">
                     <p:outputLabel value="#{msg['szamla.kelte']}"/>:<br/>
-                    <p:inputText id="szamlaKelte" value="#{szamla.kelte}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.kelte']}">
-                        <f:convertDateTime pattern="yyyy.MM.dd"/>
-                    </p:inputText>
+                    <p:calendar value="#{szamla.kelte}" id="szamlaKelte" required="true" requiredMessage="#{msg['error.kotelezo.szamla.kelte']}" showOn="both" pattern="yyyy.MM.dd" navigator="true"/>
                     <p:message for="szamlaKelte"/>
                 </p:column>
                 <p:column colspan="2">
                     <p:outputLabel value="#{msg['szamla.teljesitesIdoponja']}"/>:<br/>
-                    <p:inputText id="teljesitesIdopontja" value="#{szamla.teljesitesIdoponja}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.teljesitesIdoponja']}">
-                        <f:convertDateTime pattern="yyyy.MM.dd"/>
-                    </p:inputText>
+                    <p:calendar id="teljesitesIdopontja" value="#{szamla.teljesitesIdoponja}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.teljesitesIdoponja']}" showOn="both" pattern="yyyy.MM.dd" navigator="true"/>
                     <p:message for="teljesitesIdopontja"/>
                 </p:column>
                 <p:column colspan="2">
                     <p:outputLabel value="#{msg['szamla.fizetesiHatarido']}"/>:<br/>
-                    <p:inputText id="fizetesiHatarido" value="#{szamla.fizetesiHatarido}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.fizetesiHatarido']}">
-                        <f:convertDateTime pattern="yyyy.MM.dd"/>
-                    </p:inputText>
+                    <p:calendar id="fizetesiHatarido" value="#{szamla.fizetesiHatarido}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.fizetesiHatarido']}" showOn="both" pattern="yyyy.MM.dd" navigator="true"/>
                     <p:message for="fizetesiHatarido"/>
                 </p:column>
             </p:row>
@@ -108,3 +111,4 @@
         </p:panelGrid>
     </ui:define>
 </ui:composition>
+

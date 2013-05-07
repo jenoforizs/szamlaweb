@@ -13,6 +13,7 @@
             <title>Main</title>
             <h:outputStylesheet name="css/default.css"/>
             <h:outputStylesheet name="css/cssLayout.css"/>
+            <script type="text/javascript" src="application.js"></script>
         </h:head>
 
         <h:body>
@@ -26,7 +27,7 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit styleClass="layoutUnitCenter" position="center">
-                    <h:form id="mainForm">
+                    <h:form id="mainForm" prependId="false">
                         <ui:insert name="content" />
                     </h:form>
                 </p:layoutUnit>

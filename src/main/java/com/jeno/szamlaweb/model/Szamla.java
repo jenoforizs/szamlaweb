@@ -1,5 +1,6 @@
 package com.jeno.szamlaweb.model;
 
+import java.util.Calendar;
 import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -31,6 +32,13 @@ public class Szamla {
     public static Szamla ujBeveteliSzamla() {
         Szamla sz = new Szamla();
         
+        Calendar cal = Calendar.getInstance();
+        sz.setKelte(cal.getTime());
+        sz.setTeljesitesIdoponja(cal.getTime());
+        
+        cal.add(Calendar.MONTH, 1);
+        sz.setFizetesiHatarido(cal.getTime());
+        
         sz.fajta = Fajta.BEVETELI;
         sz.fizetesModja = FizetesModja.ATUTALAS;
         sz.afa = 27d;
@@ -42,6 +50,11 @@ public class Szamla {
 
     public static Szamla ujKiadasiSzamla() {
         Szamla sz = new Szamla();
+        
+        Calendar cal = Calendar.getInstance();
+        sz.setKelte(cal.getTime());
+        sz.setTeljesitesIdoponja(cal.getTime());
+        sz.setFizetesiHatarido(cal.getTime());
         
         sz.fajta = Fajta.KIADASI;
         sz.fizetesModja = FizetesModja.ATUTALAS;
