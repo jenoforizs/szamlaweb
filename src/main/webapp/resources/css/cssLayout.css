@@ -1,0 +1,30 @@
+
+#north {
+    position: relative;
+/*    background-color: #85B2CB !important;
+    color: white;*/
+    padding: 0px;
+    margin: 0px 0px 10px 0px;
+}
+
+#north td.subtitle {
+    text-align: right;
+}
+
+#north a:link, #north a:visited {
+  color: white;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+#north a:link:hover, #north a:visited:hover  {
+  color: black;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+div.ui-layout-unit {
+    border: none !important;
+}
+
+

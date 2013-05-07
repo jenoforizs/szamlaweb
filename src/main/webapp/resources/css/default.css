@@ -1,0 +1,369 @@
+body {
+    background-color: #ffffff;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000000;  
+    margin: 10px;
+}
+
+h1 {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    border-bottom: 1px solid #AFAFAF; 
+    font-size:  16px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #D20005;
+}
+
+.borderlessTable td {
+    border: none !important;
+}
+
+.pagesubtitle {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    font-size:  16px;
+    font-weight: bold;
+    color: #D20005;
+}
+
+a:link, a:visited {
+    color: #045491;
+    font-weight : bold;
+    text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+    color: #045491;
+    font-weight : bold;
+    text-decoration : underline;
+}
+
+.ui-widget,
+.ui-widget .ui-widget {
+    font-size: 12px !important;
+}
+
+.app-title {
+    font-size: 1.6em; 
+    font-weight: bold;
+}
+
+.app-subtitle {
+    font-size: 1.1em; 
+    font-weight: bold;
+    font-style: italic;
+}
+
+.subpanel-header {
+    font-size: 1.1em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    color: #1D5987;
+}
+
+.subpanel {
+    border: none !important;
+    padding: 0 !important;
+    margin-top: 10px;
+}
+
+.subpanel>div {
+    padding-top: 0 !important;
+}
+
+.actions td {
+    border: none !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
+/** FIXME: ez egy primefaces 3.0M4-ben lévő pozicionálási hiba javítása */
+div.ui-selectonemenu {
+    position: relative;
+    vertical-align: middle;
+}
+
+.ui-menuitem-link {
+    text-decoration: none !important;
+}
+
+.ui-menu {
+    border: none !important;
+    padding-top: 0 !important;
+}
+
+.ui-layout-unit {
+    padding-top: 0 !important;
+}
+
+input.required {
+    background-color: #ffe3ca!important;
+}
+
+label.required {
+    font-weight: bold;
+}
+
+label.required:after {
+    content: "*";
+    font-weight: bold;
+}
+
+#center>div {
+    padding-top: 1px !important;
+}
+
+.ui-dt-c {
+    font-weight: bold !important;
+}
+
+.dataTableFilter {
+    margin-top: 5px !important;
+    text-transform: uppercase;
+}
+
+.dataTableFilterSelect {
+    margin-top: 5px !important;
+    text-transform: none;
+}
+
+.szamlaTipusVEVO {
+    background-color: #f0f0ff !important;
+}
+
+.szamlaTipusSZALLITO {
+    background-color: #f2e8cf !important;
+}
+
+.szamlaTipusKOTELEZETTSEG {
+    background-color: #f2e8cf !important;
+}
+
+.szamlaTipusKOVETELES {
+    background-color: #f0f0ffv !important;
+}
+
+.partner-fa-csod {
+    color: red;
+}
+
+.szamla-hatralekos {
+    color: red;
+}
+
+.szamla-torolt {
+    color: #AFAFAF !important;
+}
+
+.szamla-torolt:after {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: orange;
+}
+
+.aligntotop {
+    vertical-align: top;
+}
+
+.partner-label:after {
+    color: white;
+    font-size: 8px;
+    font-weight: bold;
+    display: block;
+    float: left;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-left: 2px;
+    border-radius: 2px;
+}
+
+.label-vip:after {
+    content:"VIP";
+    width: 13px;
+    background-color: orange;
+}
+
+.label-fa:after {
+    content:"F.A.";
+    width: 14px;
+    background-color: red;
+}
+
+.label-vegelszamolas:after {
+    content:"V.A:";
+    width: 14px;
+    background-color: red;
+}
+
+.label-csod:after {
+    content:"CSŐD";
+    width: 22px;
+    background-color: red;
+}
+
+.label-szinal:after {
+    content:"SZINAL";
+    width: 28px;
+    background-color: green;
+}
+
+.label-vitatott:after {
+    content:"VITATOTT";
+    width: 38px;
+    background-color: red;
+}
+
+.label-elerhetoseg-hianyos:after {
+    content:"HIÁNYOS";
+    width: 38px;
+    background-color: red;
+}
+
+.label-adoszam-hianyzik:after {
+    content:"NINCS ADÓSZÁM";
+    width: 68px;
+    background-color: red;
+}
+
+.partner-hianyos {
+    background-color: #ffe0c8;
+}
+
+.partnerListaTable tr {
+    height: 25px;
+}
+
+.partnerListaTable th:nth-child(1) {
+    width: 8em;
+}
+
+.partnerListaTable th:nth-child(2) {
+    width: 6em;
+}
+
+.partnerListaTable th:nth-child(4) {
+    width: 4em;
+}
+
+.partnerListaTable th:nth-child(5) {
+    width: 15em;
+}
+
+.partnerListaTable th:nth-child(6) {
+    width: 5em;
+}
+
+.selectPartnerTipus {
+    width: 12em !important;
+}
+
+.szamlaListaTable tr {
+    height: 25px;
+}
+
+/* Számlatípus */
+.szamlaListaTable th:nth-child(1) {
+    width: 8em;
+}
+
+/* Utalási állapot */
+.szamlaListaTable th:nth-child(2) {
+    width: 8em;
+}
+
+/* Számlaszám */
+.szamlaListaTable th:nth-child(4) {
+    width: 10em;
+}
+/* Fizetési határidő */
+.szamlaListaTable th:nth-child(5) {
+    width: 7em;
+}
+/* Összeg */
+.szamlaListaTable th:nth-child(6) {
+    width: 7em;
+}
+/* Hátralék */
+.szamlaListaTable th:nth-child(7) {
+    width: 7em;
+}
+/* Pénznem */
+.szamlaListaTable th:nth-child(8) {
+    width: 8em;
+}
+/* Műveletek */
+.szamlaListaTable th:nth-child(9) {
+    width: 3em;
+    min-width: 3em;
+}
+
+.selectPenznem {
+    width: 6em !important;
+}
+
+.selectSzamlaUtalasAllapot {
+    width: 7em !important;
+}
+
+.selectSzamlaAllapot {
+    width: 7em !important;
+}
+
+td.label {
+    font-weight: normal;
+    border: 0 !important;
+    padding: 4px !important;
+    width: 120px;
+}
+
+td.value {
+    font-weight: bold;
+    border: 0 !important;
+    padding: 4px !important;
+}
+
+.customButton .modositas {
+    background: url("/szamlaweb/resources/images/pencil.png");
+    width: 48px;
+    height: 48px;
+    left: 15% !important;
+    top: 15% !important;
+    margin-left:0px;
+}
+
+.customButton .torles {
+    background: url("/szamlaweb/resources/images/delete.png");
+    width: 48px;
+    height: 48px;
+    left: 15% !important;
+    top: 15% !important;
+    margin-left:0px;
+}
+
+.customButton .visszaHaza {
+    background: url("/szamlaweb/resources/images/home_back.png");
+    width: 48px;
+    height: 48px;
+    left: 15% !important;
+    top: 15% !important;
+    margin-left:0px;
+}
+
+.customButton .ok {
+    background: url("/szamlaweb/resources/images/okay.png");
+    width: 48px;
+    height: 48px;
+    left: 15% !important;
+    top: 15% !important;
+    margin-left:0px;
+}
+
+.customButton {
+    width: 49px !important;
+    height: 49px !important;
+}
+

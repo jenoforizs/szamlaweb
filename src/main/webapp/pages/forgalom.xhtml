@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                template="../templates/template.xhtml">
+    <ui:define name="metadata"/>
+    <ui:define name="content">
+        <p:panelGrid style="width: 100%">
+            <c:set var="forgalom" value="#{forgalomBean.forgalom}"/>
+
+            <h:inputHidden value="#{forgalom.fajta}"/>
+            <h:inputHidden value="#{forgalom.id}"/>
+
+            <f:facet name="header">
+                <p:row>
+                    <c:choose>
+                        <c:when test="#{forgalom.fajta=='BEJOVO' and forgalom.id == null}">
+                            <p:column colspan="6">#{msg['ujbejovoforgalom.title']}</p:column>
+                        </c:when>
+                        <c:when test="#{forgalom.fajta=='KIMENO' and szamla.id == null}">
+                            <p:column colspan="6">#{msg['ujkimenoforgalom.title']}</p:column>
+                        </c:when>
+                        <c:otherwise>
+                            <p:column colspan="6">#{msg['forgalom.adatai']}</p:column>
+                        </c:otherwise>
+                    </c:choose>
+                </p:row>
+                <c:if test="#{forgalom.id != null}">
+                    <p:row>
+                        <p:column colspan="6">#{forgalom.id}</p:column>
+                    </p:row>
+                </c:if>
+            </f:facet>
+            <p:row>
+                <p:column colspan="3">
+                    <p:outputLabel value="#{msg['forgalom.osszeg']}"/><br/>
+                    <p:inputText id="osszeg" value="#{forgalom.osszeg}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.bruttoErtek']}"/>                   
+                    <p:message for="osszeg"/>
+                </p:column>
+                <p:column colspan="3">
+                    <p:outputLabel value="#{msg['forgalom.idopontja']}"/>:<br/>
+                    <p:inputText id="idopontja" value="#{forgalom.idopont}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.kelte']}">
+                        <f:convertDateTime pattern="yyyy.MM.dd"/>
+                    </p:inputText>
+                    <p:message for="idopontja"/>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column colspan="6" style="width: 100%;text-align: left">
+                    <p:outputLabel value="#{msg['forgalom.megjegyzes']}"/>:<br/>
+                    <p:inputTextarea id="megjegyzes" value="#{forgalom.megjegyzes}" autoResize="true" maxlength="1000" counter="display" counterTemplate="Hátralévő karakterek száma: {0}" style="width: 100%"/>
+                    <h:outputText id="display"/>
+                    <p:message for="megjegyzes"/>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column colspan="3" style="width: 50%;text-align: center">
+                    <p:commandButton title="Mentés" icon="ok" styleClass="customButton" action="#{forgalomBean.mentes}" ajax="false"/>  
+                </p:column>
+                <p:column colspan="3" style="width: 50%;text-align: center">
+                    <p:button title="Vissza a listához" icon="visszaHaza" styleClass="customButton" outcome="/pages/index.jsf"/>  
+                </p:column>
+            </p:row>
+        </p:panelGrid>
+    </ui:define>
+</ui:composition>

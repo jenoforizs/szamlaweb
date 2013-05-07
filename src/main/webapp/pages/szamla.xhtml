@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                template="../templates/template.xhtml">
+    <ui:define name="metadata"/>
+    <ui:define name="content">
+        <p:panelGrid style="width: 100%">
+            <c:set var="szamla" value="#{szamlaBean.szamla}"/>
+
+            <h:inputHidden value="#{szamla.fajta}"/>
+            <h:inputHidden value="#{szamla.id}"/>
+
+            <f:facet name="header">
+                <p:row>
+                    <c:choose>
+                        <c:when test="#{szamla.fajta=='BEVETELI' and szamla.id == null}">
+                            <p:column colspan="6">#{msg['ujbeveteliszamla.title']}</p:column>
+                        </c:when>
+                        <c:when test="#{szamla.fajta=='KIADASI' and szamla.id == null}">
+                            <p:column colspan="6">#{msg['ujkiadasiszamla.title']}</p:column>
+                        </c:when>
+                        <c:otherwise>
+                            <p:column colspan="6">#{msg['szamla.adatai']}</p:column>
+                        </c:otherwise>
+                    </c:choose>
+                </p:row>
+                <c:if test="#{szamla.id != null}">
+                    <p:row>
+                        <p:column colspan="6">#{szamla.id}</p:column>
+                    </p:row>
+                </c:if>
+            </f:facet>
+            <p:row>
+                <p:column colspan="2">#{msg['szamla.nev']}</p:column>
+                <p:column colspan="4">
+                    <p:inputText id="nev" value="#{szamla.nev}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.nev']}"/>
+                    <p:message for="nev"/>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column colspan="2">
+                    <p:outputLabel value="#{msg['szamla.bruttoErtek']}"/><br/>
+                    <p:inputText id="bruttoErtek" value="#{szamla.bruttoErtek}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.bruttoErtek']}"/>                   
+                    <p:message for="bruttoErtek"/>
+                </p:column>
+                <p:column colspan="2">
+                    <p:outputLabel value="#{msg['szamla.nettoErtek']}"/><br/>
+                    <p:inputText id="nettoErtek" value="#{szamla.nettoErtek}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.nettoErtek']}"/>
+                    <p:message for="nettoErtek"/>
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="#{msg['szamla.afa']}"/>:<br/>
+                    <p:inputText id="afa" value="#{szamla.afa}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.afa']}"/>%
+                    <p:message for="afa"/>
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="#{msg['szamla.afaSzamolando']}"/>:<br/>
+                    <p:selectOneMenu id="afaSzamolando" value="#{szamla.afaSzamolando}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.afaSzamolando']}">
+                        <f:selectItems var="val" value="#{serviceBean.igenNem}" itemValue="#{val}" itemLabel="#{val.label}"/>
+                    </p:selectOneMenu>
+                    <p:message for="afaSzamolando"/>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column colspan="2">
+                    <p:outputLabel value="#{msg['szamla.kelte']}"/>:<br/>
+                    <p:inputText id="szamlaKelte" value="#{szamla.kelte}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.kelte']}">
+                        <f:convertDateTime pattern="yyyy.MM.dd"/>
+                    </p:inputText>
+                    <p:message for="szamlaKelte"/>
+                </p:column>
+                <p:column colspan="2">
+                    <p:outputLabel value="#{msg['szamla.teljesitesIdoponja']}"/>:<br/>
+                    <p:inputText id="teljesitesIdopontja" value="#{szamla.teljesitesIdoponja}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.teljesitesIdoponja']}">
+                        <f:convertDateTime pattern="yyyy.MM.dd"/>
+                    </p:inputText>
+                    <p:message for="teljesitesIdopontja"/>
+                </p:column>
+                <p:column colspan="2">
+                    <p:outputLabel value="#{msg['szamla.fizetesiHatarido']}"/>:<br/>
+                    <p:inputText id="fizetesiHatarido" value="#{szamla.fizetesiHatarido}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.fizetesiHatarido']}">
+                        <f:convertDateTime pattern="yyyy.MM.dd"/>
+                    </p:inputText>
+                    <p:message for="fizetesiHatarido"/>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column colspan="6" style="width: 100%;text-align: left">
+                    <p:outputLabel value="#{msg['szamla.megjegyzes']}"/>:<br/>
+                    <p:inputTextarea value="#{szamla.megjegyzes}" autoResize="true" maxlength="1000" counter="display" counterTemplate="Hátralévő karakterek száma: {0}" style="width: 100%"/>
+                    <h:outputText id="display"/>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column colspan="3" style="width: 50%;text-align: center">
+                    <p:commandButton title="Mentés" icon="ok" styleClass="customButton" action="#{szamlaBean.mentes}" ajax="false"/>  
+                </p:column>
+                <p:column colspan="3" style="width: 50%;text-align: center">
+                    <p:button title="Vissza a listához" icon="visszaHaza" styleClass="customButton" outcome="/pages/index.jsf"/>  
+                </p:column>
+            </p:row>
+        </p:panelGrid>
+    </ui:define>
+</ui:composition>

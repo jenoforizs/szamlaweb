@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="../templates/template.xhtml">
+    <ui:define name="metadata"/>
+    <ui:define name="content">
+        <p:panelGrid style="width: 100%;">
+            <p:row>
+                <p:column style="width: 50%;vertical-align: top">
+                    <p:dataTable var="f" value="#{forgalomBean.bejovoForgalom}">
+                        <f:facet name="header">
+                            Bejövő forgalom
+                        </f:facet>
+                        <p:column width="50%">
+                            <f:facet name="header">
+                                <h:outputText value="Típus"/>
+                            </f:facet>
+                            <h:outputText value="#{f.tipus.label}"/>
+                        </p:column>
+                        <p:column width="20%">
+                            <f:facet name="header">
+                                <h:outputText value="Időpont"/>
+                            </f:facet>
+                            <h:outputText value="#{f.idopont}">
+                                <f:convertDateTime pattern="yyyy.MM.dd"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column width="20%">
+                            <f:facet name="header">
+                                <h:outputText value="Összeg"/>
+                            </f:facet>
+                            <h:outputText value="#{f.osszeg}"/>
+                        </p:column>
+                        <p:column width="10%"><p:rowToggler/></p:column>
+
+                        <p:rowExpansion>
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="Megjegyzés"/>:
+                                        <h:outputText value="#{f.megjegyzes}"/>                    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:commandButton title="Módosítás" icon="modositas" styleClass="customButton" action="#{forgalomBean.modositas}" ajax="false">
+                                            <f:setPropertyActionListener target="#{forgalomBean.id}" value="#{f.id}" />                                            
+                                        </p:commandButton>
+                                        <p:commandButton title="Törlés" icon="torles" styleClass="customButton" action="#{forgalomBean.torles}" ajax="false">
+                                            <f:setPropertyActionListener target="#{forgalomBean.id}" value="#{f.id}" />                                            
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                        </p:rowExpansion>
+                    </p:dataTable>
+                </p:column>
+                <p:column style="width: 50%;vertical-align: top">
+                    <p:dataTable var="f" value="#{forgalomBean.kimenoForgalom}">
+                        <f:facet name="header">
+                            Kimenő forgalom
+                        </f:facet>
+                        <p:column width="50%">
+                            <f:facet name="header">
+                                <h:outputText value="Típus"/>
+                            </f:facet>
+                            <h:outputText value="#{f.tipus.label}"/>
+                        </p:column>
+                        <p:column width="20%">
+                            <f:facet name="header">
+                                <h:outputText value="Időpont"/>
+                            </f:facet>
+                            <h:outputText value="#{f.idopont}">
+                                <f:convertDateTime pattern="yyyy.MM.dd"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column width="20%">
+                            <f:facet name="header">
+                                <h:outputText value="Összeg"/>
+                            </f:facet>
+                            <h:outputText value="#{f.osszeg}"/>
+                        </p:column>
+                        <p:column width="10%"><p:rowToggler/></p:column>
+
+                        <p:rowExpansion>
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="Megjegyzés"/>:
+                                        <h:outputText value="#{f.megjegyzes}"/>                    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:commandButton title="Módosítás" icon="modositas" styleClass="customButton" action="#{forgalomBean.modositas}" ajax="false">
+                                            <f:setPropertyActionListener target="#{forgalomBean.id}" value="#{f.id}" />                                            
+                                        </p:commandButton>
+                                        <p:commandButton title="Törlés" icon="torles" styleClass="customButton" action="#{forgalomBean.torles}" ajax="false">
+                                            <f:setPropertyActionListener target="#{forgalomBean.id}" value="#{f.id}" />                                            
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                        </p:rowExpansion>
+                    </p:dataTable>
+                </p:column>
+            </p:row>
+        </p:panelGrid>
+        <p:panelGrid style="width: 100%;">
+            <p:row>
+                <p:column style="width: 50%;vertical-align: top">
+                    <p:dataTable var="sz" value="#{szamlaBean.beveteliSzamlak}">
+                        <f:facet name="header">
+                            Bevételi számlák
+                        </f:facet>
+                        <p:column width="10%">
+                            <f:facet name="header">
+                                <h:outputText value="Száma"/>
+                            </f:facet>
+                            <h:outputText value="#{sz.szam}"/>
+                        </p:column>
+                        <p:column width="50%">
+                            <f:facet name="header">
+                                <h:outputText value="Neve"/>
+                            </f:facet>
+                            <h:outputText value="#{sz.nev}"/>
+                        </p:column>
+                        <p:column width="15%">
+                            <f:facet name="header">
+                                <h:outputText value="Kelte"/>
+                            </f:facet>
+                            <h:outputText value="#{sz.kelte}">
+                                <f:convertDateTime pattern="yyyy.MM.dd"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column width="15%">
+                            <f:facet name="header">
+                                <h:outputText value="Bruttó értéke"/>
+                            </f:facet>
+                            <h:outputText value="#{sz.bruttoErtek}"/>                    
+                        </p:column>
+                        <p:column width="10%"><p:rowToggler/></p:column>
+
+                        <p:rowExpansion>
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.bruttoErtek']}"/>:
+                                        <h:outputText value="#{sz.bruttoErtek}"/>                    
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.afa']}"/>:
+                                        <h:outputText value="#{sz.afa}"/>%
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.nettoErtek']}"/>:
+                                        <h:outputText value="#{sz.nettoErtek}"/>                    
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.afaSzamolando']}"/>:
+                                        <h:outputText value="#{sz.afaSzamolando.label}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.kelte']}"/>:
+                                        <h:outputText value="#{sz.kelte}">
+                                            <f:convertDateTime pattern="yyyy.MM.dd"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.teljesitesIdoponja']}"/>:
+                                        <h:outputText value="#{sz.teljesitesIdoponja}">
+                                            <f:convertDateTime pattern="yyyy.MM.dd"/>
+                                        </h:outputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.fizetesiHatarido']}"/>:
+                                        <h:outputText value="#{sz.fizetesiHatarido}">
+                                            <f:convertDateTime pattern="yyyy.MM.dd"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:commandButton title="Módosítás" icon="modositas" styleClass="customButton" action="#{szamlaBean.modositas}" ajax="false">
+                                            <f:setPropertyActionListener target="#{szamlaBean.id}" value="#{sz.id}" />                                            
+                                        </p:commandButton>
+                                        <p:commandButton title="Törlés" icon="torles" styleClass="customButton" action="#{szamlaBean.torles}" ajax="false">
+                                            <f:setPropertyActionListener target="#{szamlaBean.id}" value="#{sz.id}" />                                            
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                        </p:rowExpansion>
+                    </p:dataTable>
+                </p:column>
+                <p:column style="width: 50%;vertical-align: top">
+                    <p:dataTable var="sz" value="#{szamlaBean.kiadasiSzamlak}">
+                        <f:facet name="header">
+                            Kiadási számlák
+                        </f:facet>
+                        <p:column width="10%">
+                            <f:facet name="header">
+                                <h:outputText value="Száma"/>
+                            </f:facet>
+                            <h:outputText value="#{sz.szam}"/>
+                        </p:column>
+                        <p:column width="50%">
+                            <f:facet name="header">
+                                <h:outputText value="Neve"/>
+                            </f:facet>
+                            <h:outputText value="#{sz.nev}"/>
+                        </p:column>
+                        <p:column width="15%">
+                            <f:facet name="header">
+                                <h:outputText value="Kelte"/>
+                            </f:facet>
+                            <h:outputText value="#{sz.kelte}">
+                                <f:convertDateTime pattern="yyyy.MM.dd"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column width="15%">
+                            <f:facet name="header">
+                                <h:outputText value="Bruttó értéke"/>
+                            </f:facet>
+                            <h:outputText value="#{sz.bruttoErtek}"/>                    
+                        </p:column>
+                        <p:column width="10%"><p:rowToggler/></p:column>
+
+                        <p:rowExpansion>
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.bruttoErtek']}"/>:
+                                        <h:outputText value="#{sz.bruttoErtek}"/>                    
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.afa']}"/>:
+                                        <h:outputText value="#{sz.afa}"/>%
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.nettoErtek']}"/>:
+                                        <h:outputText value="#{sz.nettoErtek}"/>                    
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.afaSzamolando']}"/>:
+                                        <h:outputText value="#{sz.afaSzamolando.label}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.kelte']}"/>:
+                                        <h:outputText value="#{sz.kelte}">
+                                            <f:convertDateTime pattern="yyyy.MM.dd"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.teljesitesIdoponja']}"/>:
+                                        <h:outputText value="#{sz.teljesitesIdoponja}">
+                                            <f:convertDateTime pattern="yyyy.MM.dd"/>
+                                        </h:outputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{msg['szamla.fizetesiHatarido']}"/>:
+                                        <h:outputText value="#{sz.fizetesiHatarido}">
+                                            <f:convertDateTime pattern="yyyy.MM.dd"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:commandButton title="Módosítás" icon="modositas" styleClass="customButton" action="#{szamlaBean.modositas}" ajax="false">
+                                            <f:param name="id" value="#{sz.id}" />
+                                            <f:setPropertyActionListener target="#{szamlaBean.id}" value="#{sz.id}" />                                            
+                                        </p:commandButton>
+                                        <p:commandButton title="Törlés" icon="torles" styleClass="customButton" action="#{szamlaBean.torles}" ajax="false">
+                                            <f:setPropertyActionListener target="#{szamlaBean.id}" value="#{sz.id}" />                                            
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                        </p:rowExpansion>
+                    </p:dataTable>
+                </p:column>
+            </p:row>
+        </p:panelGrid>
+    </ui:define>
+</ui:composition>
