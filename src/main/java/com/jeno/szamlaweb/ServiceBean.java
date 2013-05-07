@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.jeno.szamlaweb;
 
 import com.jeno.szamlaweb.model.IgenNem;
