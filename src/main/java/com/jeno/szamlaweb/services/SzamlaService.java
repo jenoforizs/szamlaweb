@@ -53,20 +53,20 @@ public class SzamlaService {
         return mt.find(q, Szamla.class);
     } // getOsszesFizetettSzamla
     
-    public static void main(String[] args) {
-        try {
-            SzamlaService s = new SzamlaService();
-
-            Mongo mongo = new MongoClient("localhost");
-            s.mt = new MongoTemplate(mongo, "szamla");
-            
-            System.out.println(":" + s.getOsszesFizetettSzamla(Fajta.BEVETELI));
-            
-            mongo.close();
-        } catch( Exception e ) {
-            e.printStackTrace();
-        } // try - catch
-    } // main
+//    public static void main(String[] args) {
+//        try {
+//            SzamlaService s = new SzamlaService();
+//
+//            Mongo mongo = new MongoClient("localhost");
+//            s.mt = new MongoTemplate(mongo, "szamla");
+//            
+//            System.out.println(":" + s.getOsszesFizetettSzamla(Fajta.BEVETELI));
+//            
+//            mongo.close();
+//        } catch( Exception e ) {
+//            e.printStackTrace();
+//        } // try - catch
+//    } // main
     
 
 }

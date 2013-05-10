@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
  * @author Jeno
  */
 @Component
-@ManagedBean(name = "forgalomBean")
+@ManagedBean(name = "GrafikonBean")
 public class GrafikonBean {
 
     private CartesianChartModel adatModel;
@@ -31,20 +31,14 @@ public class GrafikonBean {
     @Resource
     SzamlaService szamlaService;
 
-    public GrafikonBean() {
-        adatOsszeallitas();
-    } // GrafikonBean
-
-    private void adatOsszeallitas() {
+    public String adatOsszeallitas() {
         adatModel = new CartesianChartModel();
 
         LineChartSeries cashflow = new LineChartSeries();
         cashflow.setLabel("Cashflow");
 
         List all = new ArrayList();
-        
-        System.out.println("szamlaService:" + szamlaService);
-        
+
         all.addAll(szamlaService.getOsszesFizetettSzamla(Szamla.Fajta.BEVETELI));
         all.addAll(forgalomService.getOsszesForgalom(Forgalom.Fajta.BEJOVO));
         all.addAll(szamlaService.getOsszesSzamla(Szamla.Fajta.KIADASI));
@@ -79,6 +73,7 @@ public class GrafikonBean {
         } // for
 
         adatModel.addSeries(cashflow);
+        return "/pages/grafikon.jsf";
     }
 
     public CartesianChartModel getAdatModel() {
