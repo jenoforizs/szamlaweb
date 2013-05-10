@@ -32,7 +32,7 @@
     <!-- Loads MongoDB configuraton -->
     <import resource="mongo-config.xml"/>
     
-    <bean id="forgalomService" class="com.jeno.szamlaweb.services.ForgalomService"/>
     <bean id="szamlaService" class="com.jeno.szamlaweb.services.SzamlaService"/>
+    <bean id="forgalomService" class="com.jeno.szamlaweb.services.ForgalomService"/>
     
 </beans>

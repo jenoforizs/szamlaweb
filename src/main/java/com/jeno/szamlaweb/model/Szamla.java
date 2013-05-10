@@ -24,6 +24,7 @@ public class Szamla {
     private Double afa;
     private IgenNem afaSzamolando;
     private Date teljesitesIdoponja;
+    private Date fizetesIdopontja;
     private Date kelte;
     private Date fizetesiHatarido;
     private Date rogzitesIdeje;
@@ -55,7 +56,7 @@ public class Szamla {
         sz.setKelte(cal.getTime());
         sz.setTeljesitesIdoponja(cal.getTime());
         sz.setFizetesiHatarido(cal.getTime());
-        
+        sz.setFizetesIdopontja(cal.getTime());
         sz.fajta = Fajta.KIADASI;
         sz.fizetesModja = FizetesModja.ATUTALAS;
         sz.afa = 27d;
@@ -185,11 +186,19 @@ public class Szamla {
         this.fizetesiHatarido = fizetesiHatarido;
     }
 
+    public Date getFizetesIdopontja() {
+        return fizetesIdopontja;
+    }
+
+    public void setFizetesIdopontja(Date fizetesIdopontja) {
+        this.fizetesIdopontja = fizetesIdopontja;
+    }
+
     @Override
     public String toString() {
-        return "Szamla{" + "id=" + id + ", szam=" + szam + ", fajta=" + fajta + ", nev=" + nev + ", megjegyzes=" + megjegyzes + ", fizetesModja=" + fizetesModja + ", nettoErtek=" + nettoErtek + ", bruttoErtek=" + bruttoErtek + ", afa=" + afa + ", afaSzamolando=" + afaSzamolando + ", teljesitesIdoponja=" + teljesitesIdoponja + ", kelte=" + kelte + ", fizetesiHatarido=" + fizetesiHatarido + ", rogzitesIdeje=" + rogzitesIdeje + ", modositasIdeje=" + modositasIdeje + '}';
+        return "Szamla{" + "id=" + id + ", szam=" + szam + ", fajta=" + fajta + ", nev=" + nev + ", megjegyzes=" + megjegyzes + ", fizetesModja=" + fizetesModja + ", nettoErtek=" + nettoErtek + ", bruttoErtek=" + bruttoErtek + ", afa=" + afa + ", afaSzamolando=" + afaSzamolando + ", teljesitesIdoponja=" + teljesitesIdoponja + ", fizetesIdopontja=" + fizetesIdopontja + ", kelte=" + kelte + ", fizetesiHatarido=" + fizetesiHatarido + ", rogzitesIdeje=" + rogzitesIdeje + ", modositasIdeje=" + modositasIdeje + '}';
     }
-    
+
     public enum Fajta {
 
         BEVETELI, KIADASI

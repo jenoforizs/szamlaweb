@@ -17,6 +17,9 @@
                     <p:menuitem value="Új bevételi számla" action="#{szamlaBean.ujBeveteliSzamla}" update=":content" ajax="false" />
                     <p:menuitem value="Új kiadási számla" action="#{szamlaBean.ujKiadasiSzamla}" update=":content" ajax="false" />
                 </p:submenu>
+                <p:submenu label="Grafikon" icon="ui-icon ui-icon-refresh" >
+                    <p:menuitem value="Grafikon" action="#{grafikonBean.adatOsszeallitas}" update=":content" ajax="false" />
+                </p:submenu>
             </p:menu>
         </p:outputPanel>
     </h:form>

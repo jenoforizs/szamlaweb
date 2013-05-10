@@ -53,9 +53,14 @@ public class Test {
             Test test = new Test();
             test.mt = new MongoTemplate(mongo, "szamla");
 
+            test.mt.dropCollection(Szamla.class);
+            test.mt.dropCollection(Forgalom.class);
+            
             test.insertUjBeveteliSzamla("1", 200000, test.sdf.parse("2013.01.01"));
             test.insertUjBeveteliSzamla("2",500000, test.sdf.parse("2013.02.01"));
             test.insertUjBeveteliSzamla("3",100000, test.sdf.parse("2013.03.01"));
+            test.insertUjNemFizetettBeveteliSzamla("4",100000, test.sdf.parse("2013.04.01"));
+            test.insertUjNemFizetettBeveteliSzamla("5",100000, test.sdf.parse("2013.05.01"));
             
             test.insertUjKiadasiSzamla("1", 20000, test.sdf.parse("2013.01.10"));
             test.insertUjKiadasiSzamla("2",50000, test.sdf.parse("2013.02.10"));
@@ -67,6 +72,8 @@ public class Test {
             test.insertUjForgalom(Forgalom.Fajta.KIMENO, Forgalom.Tipus.SZJA, 40000, test.sdf.parse("2013.01.10"));
             test.insertUjForgalom(Forgalom.Fajta.KIMENO, Forgalom.Tipus.NAV, 60000, test.sdf.parse("2013.01.11"));
             test.insertUjForgalom(Forgalom.Fajta.KIMENO, Forgalom.Tipus.OSZTALEK, 500000, test.sdf.parse("2013.01.30"));
+            
+            mongo.close();
         } catch( Exception e ) {
             e.printStackTrace();
         } // try - catch
@@ -89,6 +96,7 @@ public class Test {
         sz.setTeljesitesIdoponja(d);
         sz.setKelte(d);
         sz.setFizetesiHatarido(d);
+        sz.setFizetesIdopontja(d);
         sz.setNettoErtek(netto);
         sz.setBruttoErtek(netto*1.27);
         sz.setAfa(27d);
@@ -96,6 +104,20 @@ public class Test {
         mt.save(sz);
     } // insertUjBeveteliSzamla
     
+    private void insertUjNemFizetettBeveteliSzamla(String szam, double netto, Date d) {
+        Szamla sz = Szamla.ujBeveteliSzamla();
+        sz.setSzam(szam);
+        sz.setNev("Proba"+szam);
+        sz.setTeljesitesIdoponja(d);
+        sz.setKelte(d);
+        sz.setFizetesiHatarido(d);
+        sz.setNettoErtek(netto);
+        sz.setBruttoErtek(netto*1.27);
+        sz.setAfa(27d);
+        sz.setRogzitesIdeje(new Date());
+        mt.save(sz);
+    } // insertUjNemFizetettBeveteliSzamla
+
     private void insertUjKiadasiSzamla(String szam, double netto, Date d) {
         Szamla sz = Szamla.ujKiadasiSzamla();
         sz.setSzam(szam);
@@ -103,6 +125,7 @@ public class Test {
         sz.setTeljesitesIdoponja(d);
         sz.setKelte(d);
         sz.setFizetesiHatarido(d);
+        sz.setFizetesIdopontja(d);
         sz.setNettoErtek(netto);
         sz.setBruttoErtek(netto*1.27);
         sz.setAfa(27d);

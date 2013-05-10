@@ -25,7 +25,7 @@ public class ForgalomBean {
     Forgalom forgalom;
     
     @Resource
-    private ForgalomService forgalomService;
+    ForgalomService forgalomService;
     
     SimpleDateFormat sdf= new SimpleDateFormat("yyyy.MM.dd");
 

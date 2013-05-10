@@ -1,5 +1,6 @@
-function szamolNetto() {
-    var brutto = $("#bruttoErtek").val();
-    var netto = brutto * 0.78740157;
-    $("#nettoErtek").attr("value", netto);
+function szamolBrutto() {
+    var netto = $("#nettoErtek").val();
+    var afaKulcs = $("#afa").val();
+    var brutto = netto * (1+(afaKulcs/100));
+    $("#bruttoErtek").attr("value", brutto);
 }

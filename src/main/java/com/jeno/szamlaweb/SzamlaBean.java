@@ -7,9 +7,6 @@ import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

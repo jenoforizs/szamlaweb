@@ -4,6 +4,7 @@ import com.jeno.szamlaweb.model.Forgalom;
 import com.jeno.szamlaweb.model.Forgalom.Fajta;
 import java.util.List;
 import javax.annotation.Resource;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -39,9 +40,8 @@ public class ForgalomService {
     public List<Forgalom> getOsszesForgalom(Fajta fajta) {
         Query q = new Query();
         q.addCriteria(Criteria.where("fajta").is(fajta.toString()));
-
-        List<Forgalom> bejovoForgalom = mt.find(q, Forgalom.class);
-
-        return bejovoForgalom;
+        q.with(new Sort(Sort.Direction.ASC, "idopont"));
+        
+        return mt.find(q, Forgalom.class);
     } // getOsszesForgalom
 }
