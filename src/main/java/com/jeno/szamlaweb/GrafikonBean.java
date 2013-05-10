@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import org.primefaces.model.chart.CartesianChartModel;
@@ -30,6 +32,8 @@ public class GrafikonBean {
     ForgalomService forgalomService;
     @Resource
     SzamlaService szamlaService;
+    double min = 0;
+    double max = 0;
 
     public String adatOsszeallitas() {
         adatModel = new CartesianChartModel();
@@ -45,6 +49,10 @@ public class GrafikonBean {
         all.addAll(forgalomService.getOsszesForgalom(Forgalom.Fajta.KIMENO));
 
         Collections.sort(all, new DatumComparator());
+
+        for (Object o : all) {
+            System.out.println("o:" + o);
+        } // for
 
         double sum = 0;
         String nap = null;
@@ -68,8 +76,12 @@ public class GrafikonBean {
                 } // if - else if
                 nap = sdf.format(f.getIdopont());
             } // if
-
             cashflow.set(nap, sum);
+            if (sum > max) {
+                max = sum;
+            } else if (sum < min) {
+                min = sum;
+            } // if - else if
         } // for
 
         adatModel.addSeries(cashflow);
@@ -82,6 +94,22 @@ public class GrafikonBean {
 
     public void setAdatModel(CartesianChartModel adatModel) {
         this.adatModel = adatModel;
+    }
+
+    public double getMin() {
+        return min * 1.1;
+    }
+
+    public void setMin(double min) {
+        this.min = min;
+    }
+
+    public double getMax() {
+        return max * 1.1;
+    }
+
+    public void setMax(double max) {
+        this.max = max;
     }
 
     private class DatumComparator implements Comparator {

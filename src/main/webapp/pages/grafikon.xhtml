@@ -11,7 +11,7 @@
     <ui:define name="metadata"/>
     <ui:define name="content">
         <p:lineChart id="linear" value="#{grafikonBean.adatModel}" legendPosition="e" zoom="true"  
-                     title="Cashflow" minY="0" maxY="5000000" style="height:400px" widgetVar="chart"/>  
+                     title="Cashflow" minY="#{grafikonBean.min}" maxY="#{grafikonBean.max}" style="height:400px" widgetVar="chart"/>  
 
         <p:commandButton type="button" value="Reset" icon="ui-icon-cancel" onclick="chart.resetZoom()"/>  
     </ui:define>
