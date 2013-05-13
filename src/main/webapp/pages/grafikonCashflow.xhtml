@@ -10,9 +10,7 @@
                 template="../templates/template.xhtml">
     <ui:define name="metadata"/>
     <ui:define name="content">
-        <p:lineChart id="linear" value="#{grafikonBean.adatModel}" legendPosition="e" zoom="true"  
-                     title="Cashflow" minY="#{grafikonBean.min}" maxY="#{grafikonBean.max}" style="height:400px" widgetVar="chart"/>  
-
-        <p:commandButton type="button" value="Reset" icon="ui-icon-cancel" onclick="chart.resetZoom()"/>  
+        <p:lineChart id="linear" value="#{grafikonBean.adatModelLine}" legendPosition="e" 
+                     title="Cashflow" minY="#{grafikonBean.min}" maxY="#{grafikonBean.max}" style="height:300px" />
     </ui:define>
 </ui:composition>
