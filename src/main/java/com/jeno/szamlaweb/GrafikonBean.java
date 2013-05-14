@@ -9,14 +9,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.Resource;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import org.primefaces.component.chart.bar.BarChart;
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.ChartSeries;
@@ -53,10 +50,11 @@ public class GrafikonBean {
 
         List all = new ArrayList();
 
-        all.addAll(szamlaService.getOsszesFizetettSzamla(Szamla.Fajta.BEVETELI));
-        all.addAll(forgalomService.getOsszesForgalom(Forgalom.Fajta.BEJOVO));
-        all.addAll(szamlaService.getOsszesSzamla(Szamla.Fajta.KIADASI));
-        all.addAll(forgalomService.getOsszesForgalom(Forgalom.Fajta.KIMENO));
+        // adott honapra visszamenolegesen
+        all.addAll(szamlaService.getOsszesFizetettSzamla(Szamla.Fajta.BEVETELI, ConstantsBean.HONAPRA_VISSZAMENOLEG));
+        all.addAll(forgalomService.getOsszesForgalom(Forgalom.Fajta.BEJOVO, ConstantsBean.HONAPRA_VISSZAMENOLEG));
+        all.addAll(szamlaService.getOsszesSzamla(Szamla.Fajta.KIADASI, ConstantsBean.HONAPRA_VISSZAMENOLEG));
+        all.addAll(forgalomService.getOsszesForgalom(Forgalom.Fajta.KIMENO, ConstantsBean.HONAPRA_VISSZAMENOLEG));
 
         Collections.sort(all, new DatumComparator());
 

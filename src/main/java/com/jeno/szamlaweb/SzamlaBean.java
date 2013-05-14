@@ -3,6 +3,7 @@ package com.jeno.szamlaweb;
 import com.jeno.szamlaweb.model.Szamla;
 import com.jeno.szamlaweb.services.SzamlaService;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
@@ -88,7 +89,7 @@ public class SzamlaBean {
     } // modositas
 
     public List<Szamla> getBeveteliSzamlak() {
-        beveteliSzamlak = szamlaService.getOsszesSzamla(Szamla.Fajta.BEVETELI);
+        beveteliSzamlak = szamlaService.getOsszesSzamla(Szamla.Fajta.BEVETELI, ConstantsBean.HONAPRA_VISSZAMENOLEG);
 
         return beveteliSzamlak;
     }
@@ -98,7 +99,7 @@ public class SzamlaBean {
     }
 
     public List<Szamla> getKiadasiSzamlak() {
-        kiadasiSzamlak = szamlaService.getOsszesSzamla(Szamla.Fajta.KIADASI);
+        kiadasiSzamlak = szamlaService.getOsszesSzamla(Szamla.Fajta.KIADASI, ConstantsBean.HONAPRA_VISSZAMENOLEG);
 
         return kiadasiSzamlak;
     }

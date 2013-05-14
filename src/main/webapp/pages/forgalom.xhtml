@@ -37,17 +37,29 @@
                 </c:if>
             </f:facet>
             <p:row>
-                <p:column colspan="3">
+                <p:column colspan="2">
                     <p:outputLabel value="#{msg['forgalom.osszeg']}"/><br/>
                     <p:inputText id="osszeg" value="#{forgalom.osszeg}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.bruttoErtek']}"/>                   
                     <p:message for="osszeg"/>
                 </p:column>
-                <p:column colspan="3">
+                <p:column colspan="2">
                     <p:outputLabel value="#{msg['forgalom.idopontja']}"/>:<br/>
                     <p:inputText id="idopontja" value="#{forgalom.idopont}" required="true" requiredMessage="#{msg['error.kotelezo.szamla.kelte']}">
                         <f:convertDateTime pattern="yyyy.MM.dd"/>
                     </p:inputText>
                     <p:message for="idopontja"/>
+                </p:column>
+                <p:column colspan="2">
+                    <p:outputLabel value="#{msg['forgalom.tipus']}"/>:<br/>
+                    <p:selectOneMenu id="tipus" value="#{forgalom.tipus}" required="true" requiredMessage="#{msg['error.kotelezo.forgalom.tipus']}">
+                        <c:if test="${forgalom.fajta=='BEJOVO'}">
+                            <f:selectItems var="val" value="#{constantsBean.BEJOVO_FORGALOM_TIPUS}" itemValue="#{val}" itemLabel="#{val.label}"/>
+                        </c:if>
+                        <c:if test="${forgalom.fajta=='KIMENO'}">
+                            <f:selectItems var="val" value="#{constantsBean.KIMENO_FORGALOM_TIPUS}" itemValue="#{val}" itemLabel="#{val.label}"/>
+                        </c:if>
+                    </p:selectOneMenu>
+                    <p:message for="tipus"/>
                 </p:column>
             </p:row>
             <p:row>

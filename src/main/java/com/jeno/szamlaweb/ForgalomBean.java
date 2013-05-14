@@ -47,7 +47,6 @@ public class ForgalomBean {
 
     public String modositas() {
         System.out.println("modositas()");
-        System.out.println("id:" + id);
         
         this.forgalom = forgalomService.getForgalom(id);
 
@@ -56,7 +55,6 @@ public class ForgalomBean {
 
     public String mentes() {
         System.out.println("mentes()");
-        System.out.println("id:" + id);
 
         if( id == null ) { // új rekord
             forgalom.setRogzitesIdeje(new Date());
@@ -75,11 +73,10 @@ public class ForgalomBean {
     
     public String torles() {
         System.out.println("torles()");
-        System.out.println("id:" + id);
 
         forgalomService.torol(id);
         
-        return "success";
+        return "/pages/index.jsf";
     } // torles
 
     public Forgalom getForgalom() {

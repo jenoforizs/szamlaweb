@@ -2,6 +2,7 @@ package com.jeno.szamlaweb.services;
 
 import com.jeno.szamlaweb.model.Forgalom;
 import com.jeno.szamlaweb.model.Forgalom.Fajta;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.data.domain.Sort;
@@ -44,4 +45,14 @@ public class ForgalomService {
         
         return mt.find(q, Forgalom.class);
     } // getOsszesForgalom
+
+    public List<Forgalom> getOsszesForgalom(Fajta fajta, Date tol) {
+        Query q = new Query();
+        q.addCriteria(Criteria.where("fajta").is(fajta.toString()));
+        q.addCriteria(Criteria.where("idopont").gt(tol));
+        q.with(new Sort(Sort.Direction.ASC, "idopont"));
+        
+        return mt.find(q, Forgalom.class);
+    } // getOsszesForgalom
+
 }
